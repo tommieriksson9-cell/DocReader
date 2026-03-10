@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image_file_icon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="fitCenter" />
+
+        <!-- File name -->
+        <TextView
+            android:id="@+id/text_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:textSize="13sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/image_file_icon"
+            app:layout_constraintEnd_toStartOf="@id/button_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Directory path -->
+        <TextView
+            android:id="@+id/text_file_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginTop="1dp"
+            android:textSize="10sp"
+            android:textColor="@color/text_secondary"
+            android:ellipsize="start"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/image_file_icon"
+            app:layout_constraintEnd_toStartOf="@id/button_delete"
+            app:layout_constraintTop_toBottomOf="@id/text_file_name" />
+
+        <!-- Chips row -->
+        <LinearLayout
+            android:id="@+id/chips_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:gap="6dp"
+            app:layout_constraintStart_toEndOf="@id/image_file_icon"
+            app:layout_constraintEnd_toStartOf="@id/button_delete"
+            app:layout_constraintTop_toBottomOf="@id/text_file_path">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_type"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textSize="9sp"
+                android:textColor="@android:color/white"
+                app:chipMinHeight="20dp"
+                app:chipStartPadding="6dp"
+                app:chipEndPadding="6dp"/>
+
+            <TextView
+                android:id="@+id/text_file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+                android:id="@+id/text_file_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/text_secondary"
+            android:contentDescription="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

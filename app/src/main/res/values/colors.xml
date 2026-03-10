@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1565C0</color>
+    <color name="primary_dark">#003c8f</color>
+    <color name="accent">#FF6F00</color>
+    <color name="background">#F5F7FA</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider">#E0E0E0</color>
+
+    <!-- Document type colors -->
+    <color name="pdf_color">#D32F2F</color>
+    <color name="docx_color">#1565C0</color>
+    <color name="xlsx_color">#2E7D32</color>
+    <color name="txt_color">#616161</color>
+</resources>
