@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#525659">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- PDF: zoomable ImageView — no ScrollView wrapper (zoom handles panning) -->
+    <ImageView
+        android:id="@+id/pdf_page_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="matrix"
+        android:background="#525659"
+        android:visibility="gone" />
+
+    <!-- PDF nav bar -->
+    <LinearLayout
+        android:id="@+id/pdf_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#3C3F41"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_prev_page"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Prev"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#555555"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/text_page_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 / 1"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:layout_marginEnd="16dp"/>
+
+        <Button
+            android:id="@+id/btn_next_page"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Next"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#555555"/>
+
+    </LinearLayout>
+
+    <!-- TXT viewer -->
+    <ScrollView
+        android:id="@+id/scroll_txt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/text_primary"
+            android:textIsSelectable="true"/>
+
+    </ScrollView>
+
+</LinearLayout>
