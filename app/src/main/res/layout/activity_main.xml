@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:titleTextColor="@android:color/white"
+            app:title="@string/app_name" />
+
+        <!-- Search bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:hint="Search documents..."
+                android:background="@drawable/search_bg"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"
+                android:textColorHint="#80FFFFFF"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <!-- Filter tabs -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/card_background"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <TextView android:id="@+id/chip_filter_all"  style="@style/FilterChip" android:text="ALL" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_filter_pdf"  style="@style/FilterChip" android:text="PDF"  android:textColor="@color/pdf_color" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_filter_docx" style="@style/FilterChip" android:text="DOCX" android:textColor="@color/docx_color" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_filter_xlsx" style="@style/FilterChip" android:text="XLSX" android:textColor="@color/xlsx_color" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_filter_txt"  style="@style/FilterChip" android:text="TXT" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Sort bar -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#F8FAFB"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sort:"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginRight="4dp"/>
+
+                <TextView android:id="@+id/chip_sort_date" style="@style/SortChip" android:text="Date" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_sort_name" style="@style/SortChip" android:text="A-Z"  android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_sort_size" style="@style/SortChip" android:text="Size" android:layout_marginRight="6dp"/>
+                <TextView android:id="@+id/chip_sort_type" style="@style/SortChip" android:text="Type" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Doc count -->
+        <TextView
+            android:id="@+id/text_doc_count"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/background"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:gravity="center_vertical"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"
+            android:text="0 documents" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Document list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_documents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="72dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/empty_documents"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="@color/text_secondary"
+        android:visibility="gone" />
+
+    <!-- Scan overlay -->
+    <LinearLayout
+        android:id="@+id/scan_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E80D1B2A"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scanning Device..."
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <ProgressBar
+            android:id="@+id/progress_scan"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/primary"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/text_scan_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:textColor="#80FFFFFF"
+            android:gravity="center"
+            android:ellipsize="start"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/text_scan_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#66BB6A"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:text="Found: 0"/>
+
+    </LinearLayout>
+
+    <!-- FAB -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_add_document"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="@string/open_file"
+        app:icon="@drawable/ic_add"
+        app:backgroundTint="@color/primary"
+        android:textColor="@android:color/white"
+        app:iconTint="@android:color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
